@@ -38,7 +38,6 @@ module Hexagile
         	  });
           </script>
       CODE
-      puts ::ERB.new(jquery_grid_code, nil, '>').result(binding)
       ::ERB.new(jquery_grid_code, nil, '>').result(binding).gsub("_n_", "\n").
         gsub(/[ \t]{2,}/,' ').
         gsub(/,\s+\}\);/, "\n  });").
