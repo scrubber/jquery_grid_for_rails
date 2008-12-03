@@ -1,0 +1,38 @@
+--- 
+:before: var lastsel2;
+:params: 
+  :datatype: xml
+  :mtype: GET
+  :colNames: 
+  - title
+  - first name
+  - last name
+  - i can has cheezburger?
+  :colModel: 
+  - :width: 40
+    :index: title
+    :name: title
+    :editable: true    
+  - :width: 130
+    :index: first_name
+    :name: first_name
+    :editable: true
+  - :width: 130
+    :index: last_name
+    :name: last_name
+    :editable: true
+  - :width: 200
+    :index: i_can_has_cheezburger
+    :name: i_can_has_cheezburger
+    :editable: false
+  :pager: $('#<grid_name>_pager')
+  :function_onSelectRow: "(id)
+   	if(id && id!==lastsel2) {
+	  $('#<grid_name>').restoreRow(lastsel2);
+	  $('#<grid_name>').editRow(id,true);
+	  lastsel2=id;
+	}"
+  :sortname: first_name
+  :sortorder: desc	
+  :rowNum: 10
+  :imgpath: /stylesheets/jqGrid-themes/basic/images

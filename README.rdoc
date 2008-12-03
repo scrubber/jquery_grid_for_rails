@@ -1,0 +1,61 @@
+== jQuery Grid for Rails - powerful AJAX grid/table component.
+
+jQuery Grid for Rails is (surprise, surprise) a Rails plugin wrapping the jqGrid jQuery plugin (http://www.trirand.com/blog/), making it super easy to include and use from a Rails application, with a full-fledged tutorial and example app (coming soon!). jQuery Grid for Rails enables you to embed a powerful (sorting, drag and drop, in-place edit, multi selection, subgrids...), highly customizable and easy to use (configured via YAML) AJAX grid/table into your app in no time! 
+
+== Installation
+
+ script/plugin install git://github.com/scrubber/jquery_grid_for_rails.git
+
+This is quite unlikely, but if the CSS/js and sample config file (sample.yaml) to get you started were not copied properly, run the setup rake task: rake jquery_grid_for_rails:setup
+
+== Usage
+
+First you need to define how your grid will look like - check out config/jquery_grid/sample.yaml to get an idea.
+Once it is set up, there are 5 helpers at your disposal:
+
+These 2 (js and CSS includes) should go into your application template (or wherever you'd like to use the component)
+
+ <%= include_jquery_grid_javascript %>
+ <%= include_jquery_grid_css %>
+
+and these into the page where you'd like to display the grid:
+
+To generate the grid:
+
+ <%= jquery_grid :my_super_cool_grid, {:url => grid_data_url } %>
+
+To insert it into the page:
+
+ <%= jquery_grid_table %>
+ <%= jquery_grid_pager %>
+
+obviously you can omit jquery_grid_pager if you are not going to use pagination.
+
+== Yaml Semantics and Tricks
+
+The yaml file is mostly just an everyday dull yaml file, with these exceptions:
+
+* the top level has has 2 keys: :before with a string value (this string is pasted before the jqGrid call in javascript as-is) and :params,
+  which are the grid params
+* <grid_name> will be translated into the grid name (the id used for the table containing the grid). This is useful for example here:
+  :pager: $('#<grid_name>_pager')
+  so you don't have to hardcode the name of the grid, and thus your configuration is more reusable and flexible
+* to declare a javascript function use function_fname (where fname will be the name of the function in javascript), put the params on the
+  first row as you would in normal JS and omit opening/closing curly braces. It sounds complicated, but it is not:
+
+   :function_onSelectRow: "(id)
+     if(id && id!==lastsel2) {
+     $('#<grid_name>').restoreRow(lastsel2);
+     $('#<grid_name>').editRow(id,true);
+     lastsel2=id;
+    }"
+
+  Anyway, it's unlikely you will need too much functions besides in-place editing, which you have above.
+
+Don't worry about these - you won't need this info in 99% of the cases. Just edit the sample config file, open the jqGrid documentation and you'll be fine.
+
+== Example
+
+I'll create a full example, upload it to github as well as describe it step by step.
+
+Copyright (c) 2008 Peter Szinek, released under the MIT license
