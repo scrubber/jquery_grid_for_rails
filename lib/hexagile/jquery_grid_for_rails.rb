@@ -14,13 +14,13 @@ module Hexagile
       jquery_grid_code = <<-CODE
           <script type="text/javascript">
             <%= before %>_n_
-        		$(document).ready(function(){ 
-        		  $("#<%= name %>").jqGrid({        		    
+        		jQuery(document).ready(function(){ 
+        		  jQuery("#<%= name %>").jqGrid({        		    
         		  <% params.each do |key,value| %>
         		    <% if opts.keys.include?(key) %>
         		      _ss_<%= key %>: <%= opts[key].to_json %>,
         		    <% elsif (value.is_a? String) && (value[0..0] == "$") %>
-        		      _ss_<%= key %>: <%= value %>,
+        		      _ss_<%= key %>: <%= "jQuery"+value[1,value.length] %>,
         		    <% elsif (key.to_s[0..8] == 'function_') %>
         		      <% js_params, body = param_body(value) %>
         		      _ss_<%= key.to_s[9..-1] %>: function(<%= js_params %>) {
