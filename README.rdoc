@@ -1,6 +1,6 @@
 == jQuery Grid for Rails - powerful AJAX grid/table component.
 
-jQuery Grid for Rails is (surprise, surprise) a Rails plugin wrapping the jqGrid jQuery plugin (http://www.trirand.com/blog/), making it super easy to include and use from a Rails application, with a full-fledged tutorial and example app (coming soon!). jQuery Grid for Rails enables you to embed a powerful (sorting, drag and drop, in-place edit, multi selection, subgrids...), highly customizable and easy to use (configured via YAML) AJAX grid/table into your app in no time! 
+jQuery Grid for Rails is (surprise, surprise) a Rails plugin wrapping the jqGrid jQuery plugin (http://www.trirand.com/blog/), making it super easy to include and use from a Rails application, with a full-fledged tutorial and example app (http://www.rubyrailways.com/add-a-powerful-ajax-table-to-your-rails-application-in-5-minutes/). jQuery Grid for Rails enables you to embed a powerful (sorting, drag and drop, in-place edit, multi selection, subgrids...), highly customizable and easy to use (configured via YAML) AJAX grid/table into your app in no time! 
 
 == Installation
 
@@ -56,6 +56,7 @@ Don't worry about these - you won't need this info in 99% of the cases. Just edi
 
 == Example
 
-I'll create a full example, upload it to github as well as describe it step by step.
+http://www.rubyrailways.com/add-a-powerful-ajax-table-to-your-rails-application-in-5-minutes/
+http://github.com/scrubber/jquery_grid_for_rails_sample_app/tree/master
 
 Copyright (c) 2008 Peter Szinek, released under the MIT license
